@@ -124,7 +124,7 @@ jobs:
         # 强制记录完整日志
         mkdir -p tmp/work/logs
         set -o pipefail
-        time make -j$SAFE_CORES || make -j1 || make -j1 V=s
+        time make -j1 || make -j1 V=s || make -j$SAFE_CORES
         # 验证固件存在性
         [ -f $FIRMWARE_DIR/*.img ] || (echo "❌ 固件未生成"; exit 1)
 
