@@ -69,6 +69,7 @@ jobs:
         ls
         pwd
         ls lede/
+        echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
         #cp lede/diy-part1.sh $GITHUB_WORKSPACE/lede/
         #cp lede/diy-part2.sh $GITHUB_WORKSPACE/lede/
 
@@ -123,8 +124,7 @@ jobs:
         # 强制记录完整日志
         mkdir -p tmp/work/logs
         set -o pipefail
-        time make -j$SAFE_CORES V=sc 2>&1 | tee build.log tmp/work/logs/full.log
-
+        time make -j$SAFE_CORES || make -j1 || make -j1 V=s
         # 验证固件存在性
         [ -f $FIRMWARE_DIR/*.img ] || (echo "❌ 固件未生成"; exit 1)
 
