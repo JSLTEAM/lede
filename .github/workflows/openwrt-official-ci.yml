@@ -19,9 +19,9 @@ jobs:
 
   build_openwrt:
 
-    name: Build OpenWrt Firmware LocalRunner
+    name: Build OpenWrt Firmware GithubRunner
 
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Space cleanup and Initialization environment
